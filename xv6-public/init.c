@@ -20,13 +20,15 @@ main(void)
   dup(0);  // stderr
 
   for(;;){
-    printf(1, "init: starting sh\n");
+    printf(1, "Bienvenido");
     pid = fork();
     if(pid < 0){
       printf(1, "init: fork failed\n");
       exit();
     }
     if(pid == 0){
+		//cuando cambie el sh por ls quedo en un bucle infinito donde escribia el directorio 
+		//cuando se le pone "nohayprograma imprime infinitamente exec sh failed"
       exec("sh", argv);
       printf(1, "init: exec sh failed\n");
       exit();
